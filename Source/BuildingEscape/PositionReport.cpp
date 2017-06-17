@@ -3,7 +3,6 @@
 #include "PositionReport.h"
 #include "Gameframework/Actor.h"
 
-
 // Sets default values for this component's properties
 UPositionReport::UPositionReport()
 {
