@@ -29,6 +29,7 @@ public:
 private:
 	//How far ahead of player can we reach in centimeters
 	float Reach = 100.f;
+	
 	UPhysicsHandleComponent* PhysicsHandle = nullptr;
 	UInputComponent* InputComponent = nullptr;
 	// Grab what is in reach
@@ -41,4 +42,8 @@ private:
 	void SetupInputComponent();
 	// Return hit for first physics body in reach
 	const FHitResult GetFirstPhysicsBodyInReach();
+	// Return current start of reach line
+	FVector GetReachLineStart();
+	// Return current end of reach line
+	FVector GetReachLineEnd();
 };
