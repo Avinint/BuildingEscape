@@ -1,11 +1,13 @@
-// copyright bruno avinint
+/* copyright bruno avinint */
 
 #pragma once
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
+#include "PhysicsEngine/PhysicsHandleComponent.h"
+#include "Components/InputComponent.h"
+#include "Components/PrimitiveComponent.h"
 #include "Grabber.generated.h"
-
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class BUILDINGESCAPE_API UGrabber : public UActorComponent
@@ -27,5 +29,16 @@ public:
 private:
 	//How far ahead of player can we reach in centimeters
 	float Reach = 100.f;
-	
+	UPhysicsHandleComponent* PhysicsHandle = nullptr;
+	UInputComponent* InputComponent = nullptr;
+	// Grab what is in reach
+	void Grab();
+	// when grab is released
+	void Release();
+	// Find attached Physics handle
+	void FindPhysicsHandleComponent();
+	// Setup assumedly attached input component
+	void SetupInputComponent();
+	// Return hit for first physics body in reach
+	const FHitResult GetFirstPhysicsBodyInReach();
 };
